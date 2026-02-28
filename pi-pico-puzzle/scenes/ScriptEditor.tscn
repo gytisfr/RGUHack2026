@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://26au4wdb0tad"]
+
+[ext_resource type="PackedScene" path="res://scenes/Window.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dyjfsgn32hu2n" path="res://scripts/ScriptEditor.gd" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_code"]
+bg_color = Color(0.06, 0.07, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.2, 0.3, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_output"]
+bg_color = Color(0.04, 0.05, 0.07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15, 0.2, 0.3, 1)
+
+[node name="ScriptEditor" unique_id=1286882789 instance=ExtResource("1")]
+anchors_preset = -1
+anchor_left = 0.071
+anchor_top = 0.108
+anchor_right = 0.071
+anchor_bottom = 0.108
+offset_left = 0.20800018
+offset_top = 0.01599884
+offset_right = 558.208
+offset_bottom = 510.016
+
+[node name="VBox" parent="." index="0"]
+anchors_preset = 15
+
+[node name="ScriptEditorApp" type="MarginContainer" parent="VBox/Content" index="0" unique_id=1973086609]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/Content/ScriptEditorApp" index="0" unique_id=1169509421]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="VBox/Content/ScriptEditorApp/VBoxContainer" index="0" unique_id=1065876259]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="RunButton" type="Button" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="0" unique_id=981724202]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 13
+text = " ▶ Run "
+
+[node name="SaveButton" type="Button" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="1" unique_id=552039635]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = " 💾 Save "
+
+[node name="OpenButton" type="Button" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="2" unique_id=1284476631]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = " 📂 Open "
+
+[node name="ClearButton" type="Button" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="3" unique_id=1175966724]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 12
+text = " 🗑 Clear "
+
+[node name="FileLabel" type="Label" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="4" unique_id=882365297]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.4, 0.4, 0.55, 1)
+theme_override_font_sizes/font_size = 11
+text = "Unsaved"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="VBox/Content/ScriptEditorApp/VBoxContainer/Toolbar" index="5" unique_id=320131093]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.6, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "Ready"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBox/Content/ScriptEditorApp/VBoxContainer" index="1" unique_id=1528302197]
+layout_mode = 2
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(280)
+split_offset = 280
+
+[node name="CodeEdit" type="CodeEdit" parent="VBox/Content/ScriptEditorApp/VBoxContainer/VSplitContainer" index="0" unique_id=530554132]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/caret_color = Color(0.4, 0.9, 1, 1)
+theme_override_colors/font_color = Color(0.88, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_code")
+
+[node name="OutputPanel" type="PanelContainer" parent="VBox/Content/ScriptEditorApp/VBoxContainer/VSplitContainer" index="1" unique_id=1584292465]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_output")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBox/Content/ScriptEditorApp/VBoxContainer/VSplitContainer/OutputPanel" index="0" unique_id=1508759266]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+theme_override_colors/default_color = Color(0.75, 0.95, 0.75, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+scroll_following = true
+selection_enabled = true
