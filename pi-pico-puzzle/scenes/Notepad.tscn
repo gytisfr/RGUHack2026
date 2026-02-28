@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://notepad_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/Window.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/Notepad.gd" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_editor"]
+bg_color = Color(0.07, 0.07, 0.1, 1)
+border_color = Color(0.2, 0.2, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toolbar"]
+bg_color = Color(0.12, 0.12, 0.17, 1)
+
+[node name="Notepad" instance=ExtResource("1")]
+size = Vector2(520, 420)
+
+[node name="NotepadApp" type="MarginContainer" parent="VBox/Content"]
+script = ExtResource("2")
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/Content/NotepadApp"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+
+[node name="Toolbar" type="HBoxContainer" parent="VBox/Content/NotepadApp/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 30)
+theme_override_styles/panel = SubResource("StyleBoxFlat_toolbar")
+
+[node name="SaveButton" type="Button" parent="VBox/Content/NotepadApp/VBoxContainer/Toolbar"]
+layout_mode = 2
+text = " 💾 Save "
+theme_override_colors/font_color = Color(0.6, 1.0, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="OpenButton" type="Button" parent="VBox/Content/NotepadApp/VBoxContainer/Toolbar"]
+layout_mode = 2
+text = " 📂 Open "
+theme_override_colors/font_color = Color(0.6, 0.8, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="FileLabel" type="Label" parent="VBox/Content/NotepadApp/VBoxContainer/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Unsaved"
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+horizontal_alignment = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBox/Content/NotepadApp/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_editor")
+theme_override_colors/font_color = Color(0.88, 0.88, 0.95, 1)
+theme_override_colors/caret_color = Color(0.4, 0.8, 1.0, 1)
+theme_override_colors/selection_color = Color(0.2, 0.4, 0.7, 0.5)
+theme_override_font_sizes/font_size = 13
+placeholder_text = "Start typing..."
